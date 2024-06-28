@@ -5,8 +5,8 @@
   margin: 0;
   max-height: 150px;
   overflow-y: scroll;
-  padding-right: 10px;
   padding: 0;
+  padding-right: 10px;
   scrollbar-color: $blue-color;
   scrollbar-width: thin;
 
@@ -32,8 +32,8 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     display: flex;
     margin-bottom: 10px;
-    padding-left: 20px;
     padding: 10px;
+    padding-left: 20px;
 
     &:before {
       background-color: $primary-button-color;
