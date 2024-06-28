@@ -1,0 +1,63 @@
+@import "variables";
+
+.course-detail {
+  flex-grow: 1;
+
+  &__header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  &__title {
+    font-size: 24px;
+  }
+
+  &__text {
+    font-size: 14px;
+    margin-top: 20px;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  &__text-date {
+    font-size: 12px;
+    margin-top: 20px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 5px;
+  }
+
+  &__button-edit {
+    background-color: $blue-color;
+    background-image: url(../assets/edit.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    height: 30px;
+    padding: 8px;
+    width: 30px;
+  }
+
+  &__button-delete {
+    background-color: $blue-dark-color;
+    background-image: url(../assets/delete.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    height: 30px;
+    padding: 8px;
+    width: 30px;
+  }
+}

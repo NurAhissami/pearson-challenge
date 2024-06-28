@@ -1,0 +1,25 @@
+@import "variables";
+
+.student {
+  align-content: center;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+
+  @media (min-width: 769px) {
+    margin-bottom: 50px;
+  }
+
+  &__input {
+    flex-grow: 1;
+    margin: 0;
+  }
+
+  &__button {
+    @include button-styles(
+      $primary-button-color,
+      darken($primary-button-color, 10%)
+    );
+  }
+}

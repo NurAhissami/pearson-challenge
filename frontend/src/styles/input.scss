@@ -1,0 +1,15 @@
+@import "variables";
+@import "mixins";
+
+.input {
+  &__text {
+    @include input-styles;
+  }
+
+  &__textarea {
+    @include input-styles;
+
+    flex-grow: 1;
+    height: 100px;
+  }
+}

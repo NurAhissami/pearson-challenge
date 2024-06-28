@@ -1,0 +1,52 @@
+@import "variables";
+
+.student-list {
+  list-style-type: none;
+  margin: 0;
+  max-height: 150px;
+  overflow-y: scroll;
+  padding-right: 10px;
+  padding: 0;
+  scrollbar-color: $blue-color;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $blue-color;
+    border-radius: 10px;
+    border: 3px solid $grey-dark-background-color;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: $grey-dark-background-color;
+    border-radius: 10px;
+  }
+
+  &__item {
+    align-items: center;
+    background-color: $grey-dark-background-color;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    padding: 10px;
+
+    &:before {
+      background-color: $primary-button-color;
+      background-image: url(../assets/user.png);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 70%;
+      border-radius: 10%;
+      content: "";
+      display: inline-block;
+      height: 20px;
+      margin-right: 10px;
+      width: 20px;
+    }
+  }
+}
