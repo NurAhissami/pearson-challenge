@@ -66,5 +66,27 @@
       padding: 12px 20px;
       transition: background-color 0.3s ease;
     }
+
+    &--button-disabled {
+      @include button-styles(
+        $disabled-button-color,
+        darken($disabled-button-color, 10%)
+      );
+
+      border-radius: 4px;
+      cursor: none;
+      font-size: 16px;
+      padding: 12px 20px;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: $disabled-button-color;
+      }
+    }
+
+    &--error {
+      font-size: 10px;
+      margin-bottom: 20px;
+    }
   }
 }

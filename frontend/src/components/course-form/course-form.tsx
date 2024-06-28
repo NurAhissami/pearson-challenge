@@ -1,6 +1,7 @@
-import { FC, FormEvent } from "react";
+import { FC, useEffect, useState } from "react";
 import { CourseFormProps } from "./course-form.interface";
 import { Input } from "../input";
+import { validateDate } from "../../utils/validate-date";
 
 export const CourseForm: FC<CourseFormProps> = ({
   name,
@@ -14,7 +15,24 @@ export const CourseForm: FC<CourseFormProps> = ({
   showModal,
   closeModal,
 }) => {
-  const handleSubmit = (e: FormEvent) => {
+  const [error, setError] = useState<string>("");
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState<boolean>(true);
+
+  useEffect(() => {
+    const today = new Date().toISOString().split("T")[0];
+    if (!schedule) {
+      setSchedule(today);
+    } else {
+      validateDate(schedule, setError, setIsSubmitDisabled);
+    }
+  }, [schedule]);
+
+  const handleDateChange = (date: string) => {
+    setSchedule(date);
+    validateDate(date, setError, setIsSubmitDisabled);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit();
     closeModal();
@@ -53,9 +71,20 @@ export const CourseForm: FC<CourseFormProps> = ({
             type="date"
             placeholder="Schedule"
             value={schedule}
-            onChange={setSchedule}
+            onChange={handleDateChange}
           />
-          <button className="course-form-modal__body--button" type="submit">
+          {error && isSubmitDisabled && (
+            <p className="course-form-modal__body--error">{error}</p>
+          )}
+          <button
+            className={
+              !isSubmitDisabled
+                ? "course-form-modal__body--button"
+                : "course-form-modal__body--button course-form-modal__body--button-disabled"
+            }
+            type="submit"
+            disabled={isSubmitDisabled}
+          >
             {editCourseId ? "Update Course" : "Add Course"}
           </button>
         </form>

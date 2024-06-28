@@ -6,6 +6,7 @@ export const Input: FC<InputProps> = ({
   datatestid,
   onChange,
   placeholder,
+  required = false,
   type,
   value,
 }) => {
