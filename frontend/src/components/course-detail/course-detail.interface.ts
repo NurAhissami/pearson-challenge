@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 import { Course } from "../types";
 
 export interface CourseDetailProps {
@@ -6,5 +7,5 @@ export interface CourseDetailProps {
   onDelete: (id: number) => void;
   onAddStudent: (courseId: number, studentName: string) => void;
   studentName: string;
-  setStudentName: React.Dispatch<React.SetStateAction<string>>;
+  setStudentName: Dispatch<SetStateAction<string>>;
 }

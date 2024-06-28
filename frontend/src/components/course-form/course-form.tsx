@@ -1,8 +1,8 @@
-import React from "react";
+import { FC, FormEvent } from "react";
 import { CourseFormProps } from "./course-form.interface";
 import { Input } from "../input";
 
-export const CourseForm: React.FC<CourseFormProps> = ({
+export const CourseForm: FC<CourseFormProps> = ({
   name,
   description,
   schedule,
@@ -14,7 +14,7 @@ export const CourseForm: React.FC<CourseFormProps> = ({
   showModal,
   closeModal,
 }) => {
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     onSubmit();
     closeModal();

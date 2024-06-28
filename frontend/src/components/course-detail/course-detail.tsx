@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { FC, FormEvent, useState } from "react";
 import { CourseDetailProps } from "./course-detail.interface";
 import { Student } from "../student/student";
 
-export const CourseDetail: React.FC<CourseDetailProps> = ({
+export const CourseDetail: FC<CourseDetailProps> = ({
   course,
   onEdit,
   onDelete,
@@ -33,7 +33,7 @@ export const CourseDetail: React.FC<CourseDetailProps> = ({
     onDelete(course.id);
   };
 
-  const handleAddStudent = (e: React.FormEvent) => {
+  const handleAddStudent = (e: FormEvent) => {
     e.preventDefault();
     onAddStudent(course.id, studentName);
     setStudentName("");

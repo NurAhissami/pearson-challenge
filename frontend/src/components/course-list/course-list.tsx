@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { Course } from "../types";
 import { formatDate } from "../../utils/date-formatter";
 
@@ -7,10 +7,7 @@ interface CourseListProps {
   onSelect: (course: Course) => void;
 }
 
-export const CourseList: React.FC<CourseListProps> = ({
-  courses,
-  onSelect,
-}) => {
+export const CourseList: FC<CourseListProps> = ({ courses, onSelect }) => {
   return (
     <ul className="course-list">
       {courses.map((course) => {
