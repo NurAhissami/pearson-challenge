@@ -43,7 +43,7 @@ class Course
   // Association methods
   public addStudent!: (student: Student | number) => Promise<void>;
   public getStudents!: () => Promise<Student[]>;
-  public removeStudent!: (student: Student | number) => Promise<void>; // Add this line
+  public removeStudent!: (student: Student | number) => Promise<void>;
 }
 
 // Extend model class for Student
