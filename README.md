@@ -4,10 +4,8 @@
 
 This project is a full-stack web application that manages courses and students. The frontend is built with React and TypeScript, while the backend is developed with Node.js, using SQLite and Sequelize for data persistence.
 
-<video width="640" height="480" controls>
-  <source src="./frontend/src/assets/videos/pearson-test-challenge.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<iframe width="560" height="315" src="https://vimeo.com/manage/videos/972524821" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## Table of Content
 
@@ -16,7 +14,6 @@ This project is a full-stack web application that manages courses and students. 
 3. [Folder Structure](#folder-structure)
 4. [Installation and Execution](#installation-and-execution)
 5. [Running Tests](#running-tests)
-6. [Images](#images)
 
 ## Project Structure
 
