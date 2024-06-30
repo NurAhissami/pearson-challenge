@@ -16,7 +16,6 @@ This project is a full-stack web application that manages courses and students. 
 3. [Folder Structure](#folder-structure)
 4. [Installation and Execution](#installation-and-execution)
 5. [Running Tests](#running-tests)
-6. [Images](#images)
 
 ## Project Structure
 
