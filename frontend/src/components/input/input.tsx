@@ -34,6 +34,7 @@ export const Input: FC<InputProps> = ({
           value={value}
           onChange={handleChange}
           data-testid={datatestid}
+          required={required}
         />
       )}
     </>
