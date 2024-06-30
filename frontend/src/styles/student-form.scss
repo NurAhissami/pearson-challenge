@@ -7,13 +7,11 @@
   justify-content: center;
   margin-top: 20px;
 
-  @media (min-width: 769px) {
-    margin-bottom: 50px;
-  }
-
   &__input {
     flex-grow: 1;
     margin: 0;
+
+    @include input-styles;
   }
 
   &__button {

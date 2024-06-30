@@ -1,0 +1,44 @@
+@import "variables";
+
+.course-page {
+  height: 100%;
+
+  &__add-button {
+    @include button-styles(
+      $secondary-button-color,
+      darken($secondary-button-color, 10%)
+    );
+
+    align-items: center;
+    border-radius: 5px;
+    display: flex;
+    font-size: 14px;
+    justify-content: center;
+    margin-bottom: 30px;
+    transition: background-color 0.3s ease;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 10px;
+    position: relative;
+
+    @media (min-width: 769px) {
+      flex-direction: row;
+    }
+  }
+
+  &__courses-divider {
+    background-color: $border-color;
+    height: 1px;
+    opacity: 0.4;
+    width: 100%;
+
+    @media (min-width: 769px) {
+      width: 1px;
+      height: 500px;
+    }
+  }
+}
