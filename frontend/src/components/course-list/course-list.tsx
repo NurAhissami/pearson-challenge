@@ -1,16 +1,11 @@
 import { FC } from "react";
-import { Course } from "../types";
-import { formatDate } from "../../utils/date-formatter";
-
-interface CourseListProps {
-  courses: Course[];
-  onSelect: (course: Course) => void;
-}
+import { formatDate } from "../../utils";
+import { CourseListProps } from "./course-list.interface";
 
 export const CourseList: FC<CourseListProps> = ({ courses, onSelect }) => {
   return (
     <ul className="course-list">
-      {courses.map((course) => {
+      {courses?.map((course) => {
         const { day, month } = formatDate(course.schedule);
         return (
           <li
