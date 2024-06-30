@@ -1,29 +1,35 @@
 import { FC } from "react";
 import { StudentFormProps } from "./student-form.interface";
-import { Input } from "../input";
 
 export const StudentForm: FC<StudentFormProps> = ({
-  handleAddStudent,
-  setStudentName,
   studentName,
+  setStudentName,
+  handleAddStudent,
 }) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleAddStudent(studentName);
+    }
+  };
+
   return (
-    <form
-      className="student"
-      onSubmit={handleAddStudent}
-      data-testid="student-form"
-    >
-      <Input
-        classname="student__input"
+    <div className="student" data-testid="student-form">
+      <input
         type="text"
-        placeholder="Student Name"
         value={studentName}
-        onChange={setStudentName}
-        datatestid="student-name-input"
+        onChange={(e) => setStudentName(e.target.value)}
+        placeholder="Student name"
+        data-testid="student-name-input"
+        className="student__input"
+        onKeyDown={handleKeyDown}
       />
-      <button className="student__button" type="submit">
+
+      <button
+        className="student__button"
+        onClick={() => handleAddStudent(studentName)}
+      >
         Add Student
       </button>
-    </form>
+    </div>
   );
 };
