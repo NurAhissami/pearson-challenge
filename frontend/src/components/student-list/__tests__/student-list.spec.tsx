@@ -1,49 +1,31 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { StudentList } from "../student-list";
-import { Course } from "../../types";
+import { Student } from "../../types";
 
 describe("StudentList component", () => {
-  it("renders student items correctly when course has students", () => {
-    const course: Course = {
-      id: 1,
-      name: "Mathematics",
-      description: "Advanced Math Course",
-      schedule: "Monday and Wednesday",
-      students: [
-        { id: 1, name: "John Doe" },
-        { id: 2, name: "Jane Smith" },
-      ],
-    };
+  const mockOnDelete = jest.fn();
 
-    const { getAllByTestId } = render(<StudentList course={course} />);
-    const studentItems = getAllByTestId("student-list-item");
+  const setup = (students: Student[] = []) => {
+    return render(<StudentList students={students} onDelete={mockOnDelete} />);
+  };
 
-    if (course.students) {
-      expect(studentItems).toHaveLength(course.students.length);
-    } else {
-      expect(studentItems).toHaveLength(0);
-    }
+  it("renders student items correctly when there are students", () => {
+    const students: Student[] = [
+      { id: 1, name: "John Doe" },
+      { id: 2, name: "Jane Smith" },
+    ];
+
+    setup(students);
+
+    const studentItems = screen.getAllByTestId("student-list-item");
+
+    expect(studentItems).toHaveLength(students.length);
   });
 
-  it("renders no student items when course has no students", () => {
-    const course: Course = {
-      id: 2,
-      name: "Physics",
-      description: "Advanced Physics Course",
-      schedule: "Tuesday and Thursday",
-      students: [],
-    };
+  it("renders no student items when there are no students", () => {
+    setup();
 
-    const { queryByTestId } = render(<StudentList course={course} />);
-    const studentItem = queryByTestId("student-list-item");
-
-    expect(studentItem).toBeNull();
-  });
-
-  it("renders no student items when course is undefined", () => {
-    // @ts-expect-error: Ignoring TypeScript error for testing purposes
-    const { queryByTestId } = render(<StudentList course={undefined} />);
-    const studentItem = queryByTestId("student-list-item");
+    const studentItem = screen.queryByTestId("student-list-item");
 
     expect(studentItem).toBeNull();
   });

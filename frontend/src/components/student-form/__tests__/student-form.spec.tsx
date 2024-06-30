@@ -18,7 +18,7 @@ describe("StudentForm component", () => {
   it("renders the input and button correctly", () => {
     setup();
 
-    const inputElement = screen.getByPlaceholderText("Student Name");
+    const inputElement = screen.getByPlaceholderText("Student name");
     const buttonElement = screen.getByRole("button", { name: /add student/i });
 
     expect(inputElement).toBeInTheDocument();
@@ -29,21 +29,31 @@ describe("StudentForm component", () => {
     const setStudentName = jest.fn();
     setup({ setStudentName });
 
-    const inputElement = screen.getByPlaceholderText("Student Name");
+    const inputElement = screen.getByPlaceholderText("Student name");
     fireEvent.change(inputElement, { target: { value: "John Doe" } });
 
     expect(setStudentName).toHaveBeenCalledWith("John Doe");
   });
 
-  it("calls handleAddStudent on form submit", () => {
-    const handleAddStudent = jest.fn((e) => {
-      e.preventDefault();
-    });
-    setup({ handleAddStudent });
+  it("calls handleAddStudent on button click", () => {
+    const handleAddStudent = jest.fn();
+    setup({ handleAddStudent, studentName: "John Doe" });
 
-    const formElement = screen.getByTestId("student-form");
-    fireEvent.submit(formElement);
+    const buttonElement = screen.getByRole("button", { name: /add student/i });
+    fireEvent.click(buttonElement);
 
     expect(handleAddStudent).toHaveBeenCalledTimes(1);
+    expect(handleAddStudent).toHaveBeenCalledWith("John Doe");
+  });
+
+  it("calls handleAddStudent on Enter key press", () => {
+    const handleAddStudent = jest.fn();
+    setup({ handleAddStudent, studentName: "John Doe" });
+
+    const inputElement = screen.getByPlaceholderText("Student name");
+    fireEvent.keyDown(inputElement, { key: "Enter", code: "Enter" });
+
+    expect(handleAddStudent).toHaveBeenCalledTimes(1);
+    expect(handleAddStudent).toHaveBeenCalledWith("John Doe");
   });
 });

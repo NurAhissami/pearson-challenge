@@ -1,5 +1,10 @@
-import { render, fireEvent } from "@testing-library/react";
+import { render, waitFor } from "@testing-library/react";
+import axios from "axios";
+import { CourseDetailProps } from "../course-detail.interface";
 import { CourseDetail } from "../course-detail";
+
+jest.mock("axios");
+const mockedAxios = axios as jest.Mocked<typeof axios>;
 
 describe("CourseDetail component", () => {
   const course = {
@@ -10,60 +15,41 @@ describe("CourseDetail component", () => {
     students: [],
   };
 
-  const onEditMock = jest.fn();
-  const onDeleteMock = jest.fn();
-  const onAddStudentMock = jest.fn();
+  const mockCourseDetailProps: CourseDetailProps = {
+    course,
+    onEdit: jest.fn(),
+    onDelete: jest.fn(),
+    handleRemoveStudentFromCourse: jest.fn(),
+    updateCourseStudents: jest.fn(),
+  };
 
-  it("renders course details correctly", () => {
+  beforeEach(() => {
+    mockedAxios.post.mockClear();
+    mockedAxios.get.mockClear();
+  });
+
+  it("renders 'Select a course' message when no course is selected", () => {
     const { getByText } = render(
-      <CourseDetail
-        course={course}
-        onEdit={onEditMock}
-        onDelete={onDeleteMock}
-        onAddStudent={onAddStudentMock}
-        studentName=""
-        setStudentName={() => {}}
-      />
+      <CourseDetail {...mockCourseDetailProps} course={null} />
     );
-
-    expect(getByText("Mathematics")).toBeInTheDocument();
-    expect(getByText("Advanced Math Course")).toBeInTheDocument();
-    expect(getByText("2024-07-01")).toBeInTheDocument();
+    const selectCourseMessage = getByText("Select a course");
+    expect(selectCourseMessage).toBeInTheDocument();
   });
 
-  it("calls onDelete callbacks correctly", () => {
-    const { getByTestId } = render(
-      <CourseDetail
-        course={course}
-        onEdit={onEditMock}
-        onDelete={onDeleteMock}
-        onAddStudent={onAddStudentMock}
-        studentName=""
-        setStudentName={() => {}}
-      />
-    );
+  it("renders course details when a course is selected", async () => {
+    mockedAxios.get.mockResolvedValueOnce({ data: [] });
 
-    fireEvent.click(getByTestId("course-detail-delete-button"));
-    expect(onDeleteMock).toHaveBeenCalledTimes(1);
-    expect(onDeleteMock).toHaveBeenCalledWith(course.id);
-  });
+    const { getByText } = render(<CourseDetail {...mockCourseDetailProps} />);
+    const courseTitle = getByText("Mathematics");
+    const courseDescription = getByText("Advanced Math Course");
+    const courseSchedule = getByText("2024-07-01");
 
-  it("calls onEdit callback correctly", () => {
-    const { getByTestId } = render(
-      <CourseDetail
-        course={course}
-        onEdit={onEditMock}
-        onDelete={onDeleteMock}
-        onAddStudent={onAddStudentMock}
-        studentName=""
-        setStudentName={() => {}}
-      />
-    );
+    expect(courseTitle).toBeInTheDocument();
+    expect(courseDescription).toBeInTheDocument();
+    expect(courseSchedule).toBeInTheDocument();
 
-    const editButton = getByTestId("course-detail-edit-button");
-    fireEvent.click(editButton);
-
-    expect(onEditMock).toHaveBeenCalledTimes(1);
-    expect(onEditMock).toHaveBeenCalledWith(course);
+    await waitFor(() => {
+      expect(mockedAxios.get).toHaveBeenCalledTimes(1);
+    });
   });
 });

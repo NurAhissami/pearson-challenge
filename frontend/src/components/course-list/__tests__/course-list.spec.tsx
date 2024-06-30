@@ -1,9 +1,9 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { CourseList } from "../course-list";
 import { Course } from "../../types";
-import { formatDate } from "../../../utils/date-formatter";
+import { formatDate } from "../../../utils";
 
-jest.mock("../../../utils/date-formatter");
+jest.mock("../../../utils");
 
 describe("CourseList component", () => {
   const courses: Course[] = [

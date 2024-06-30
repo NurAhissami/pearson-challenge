@@ -5,7 +5,11 @@ export const StudentList: FC<StudentListProps> = ({ students, onDelete }) => {
   return (
     <div className="student-list">
       {students?.map((student) => (
-        <div key={student.id} className="student-list__item">
+        <div
+          key={student.id}
+          className="student-list__item"
+          data-testid="student-list-item"
+        >
           <div className="student-list__item-info">
             <span>{student.name}</span>
           </div>

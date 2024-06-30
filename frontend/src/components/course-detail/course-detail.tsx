@@ -19,15 +19,24 @@ export const CourseDetail: FC<CourseDetailProps> = ({
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    fetchStudents()
-      .then((response) => {
-        const sortedStudents = response.data.sort((a: Student, b: Student) =>
-          a.name.localeCompare(b.name)
-        );
-        setStudents(sortedStudents);
-        setFilteredStudents(sortedStudents.slice(0, 5));
-      })
-      .catch((error) => console.error("Error fetching students", error));
+    const fetchAndSetStudents = async () => {
+      try {
+        const response = await fetchStudents();
+        if (response.data) {
+          const sortedStudents = response.data.sort((a: Student, b: Student) =>
+            a.name.localeCompare(b.name)
+          );
+          setStudents(sortedStudents);
+          setFilteredStudents(sortedStudents.slice(0, 5));
+        } else {
+          throw new Error("Response data is undefined");
+        }
+      } catch (error) {
+        console.error("Error fetching students", error);
+      }
+    };
+
+    fetchAndSetStudents();
   }, []);
 
   useEffect(() => {
