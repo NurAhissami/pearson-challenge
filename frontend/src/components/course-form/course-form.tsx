@@ -60,6 +60,7 @@ export const CourseForm: FC<CourseFormProps> = ({
             placeholder="Course Name"
             value={name}
             onChange={setName}
+            required
           />
           <Input
             type="textarea"
@@ -67,11 +68,15 @@ export const CourseForm: FC<CourseFormProps> = ({
             value={description}
             onChange={setDescription}
           />
+          <label className="course-form-modal__body--label">
+            Course schedule:
+          </label>
           <Input
             type="date"
             placeholder="Schedule"
             value={schedule}
             onChange={handleDateChange}
+            required
           />
           {error && isSubmitDisabled && (
             <p className="course-form-modal__body--error">{error}</p>
