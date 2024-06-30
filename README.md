@@ -4,8 +4,7 @@
 
 This project is a full-stack web application that manages courses and students. The frontend is built with React and TypeScript, while the backend is developed with Node.js, using SQLite and Sequelize for data persistence.
 
-<iframe width="560" height="315" src="https://vimeo.com/manage/videos/972524821" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+https://github.com/NurAhissami/pearson-challenge/assets/80348550/913a598e-f233-4237-a69a-fc591890692e
 
 ## Table of Content
 
@@ -20,6 +19,9 @@ This project is a full-stack web application that manages courses and students. 
 ### Frontend
 - **React**: JavaScript library for building user interfaces.
 - **TypeScript**: Programming language that extends JavaScript by adding static types.
+
+
+
 
 ### Backend
 - **Node.js**: JavaScript runtime built on Chrome's V8 JavaScript engine.
