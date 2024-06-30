@@ -7,5 +7,9 @@ module.exports = {
     "^.+\\.tsx?$": "ts-jest",
     "^.+\\.jsx?$": "babel-jest",
   },
+  moduleNameMapper: {
+    "\\.(css|less)$": "identity-obj-proxy",
+    "^axios$": "axios/dist/node/axios.cjs",
+  },
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
 };
