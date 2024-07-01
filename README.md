@@ -13,6 +13,8 @@ https://github.com/NurAhissami/pearson-challenge/assets/80348550/913a598e-f233-4
 3. [Folder Structure](#folder-structure)
 4. [Installation and Execution](#installation-and-execution)
 5. [Running Tests](#running-tests)
+6. [Backend API Endpoints](#backend-api-endpoints)
+
 
 ## Project Structure
 
@@ -150,3 +152,84 @@ To run backend tests, use the following command:
   ```bash
     cd frontend
     npm test
+```
+
+## Backend API Endpoints
+
+https://pearson-challenge.onrender.com/courses
+https:localhost8080/courses
+
+### Courses
+
+#### Get All Courses
+
+- **Endpoint**: `GET /courses`
+- **Description**: Retrieves a list of all courses.
+
+#### Get Course by ID
+
+- **Endpoint**: `GET /courses/:id`
+- **Description**: Retrieves a single course by its ID.
+
+#### Create Course
+
+- **Endpoint**: `POST /courses`
+- **Description**: Creates a new course.
+- **Payload**:
+  
+  ```json
+  {
+    "name": "Course Name",
+    "description": "Course Description",
+    "schedule": "YYYY-MM-DD"
+  }
+  ```
+
+#### Update Course
+- **Endpoint**: PUT /courses/:id
+- **Description**: Updates an existing course.
+- **Payload**:
+  
+```json
+{
+  "name": "Updated Course Name",
+  "description": "Updated Course Description",
+  "schedule": "YYYY-MM-DD"
+}
+```
+
+#### Delete Course
+- **Endpoint**: DELETE /courses/:id
+- **Description**: Deletes a course by its ID.
+
+  
+### Students
+
+https://pearson-challenge.onrender.com/students
+https:localhost8080/students
+
+#### Get All Students
+- **Endpoint**: GET /students
+- **Description**: Retrieves a list of all students.
+
+#### Get Student by ID
+- **Endpoint**: GET /students/:id
+- **Description**: Retrieves a single student by their ID.
+
+#### Create Student
+- **Endpoint**: POST /students
+- **Description**: Creates a new student.
+- **Payload**:
+  
+```json
+{
+  "name": "Student Name",
+  "courseId": 1
+}
+```
+
+#### Delete Student
+- **Endpoint**: DELETE /students/:id
+- **Description**: Deletes a student by their ID.
+
+
