@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Course, Student } from "../components/types";
 
-const BASE_URL = "http://localhost:8080";
+const BASE_URL = process.env.REACT_APP_API_URL;
 
 // Courses API
 export const fetchCourses = () => axios.get<Course[]>(`${BASE_URL}/courses`);
